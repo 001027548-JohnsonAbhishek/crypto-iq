@@ -204,10 +204,20 @@ class MLPredictor:
                 return None
             
             model = self.models['arima']
+            if model is None:
+                return None
+                
             forecast = model.forecast(steps=days_ahead)
             
-            # Create future dates
-            last_date = model.data.dates[-1] if hasattr(model.data, 'dates') else pd.Timestamp.now()
+            # Create future dates safely
+            try:
+                if hasattr(model, 'data') and model.data is not None and hasattr(model.data, 'dates'):
+                    last_date = model.data.dates[-1]
+                else:
+                    last_date = pd.Timestamp.now()
+            except (AttributeError, IndexError):
+                last_date = pd.Timestamp.now()
+                
             future_dates = pd.date_range(start=last_date + pd.Timedelta(days=1), 
                                        periods=days_ahead, freq='D')
             

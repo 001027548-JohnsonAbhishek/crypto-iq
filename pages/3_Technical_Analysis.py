@@ -294,7 +294,10 @@ def main():
                     st.plotly_chart(fig_adx, use_container_width=True)
                     
                     current_adx = adx_data.iloc[-1]
-                    if not pd.isna(current_adx):
+                    if isinstance(current_adx, pd.Series):
+                        current_adx = current_adx.iloc[0] if len(current_adx) > 0 else None
+                    
+                    if current_adx is not None and not pd.isna(current_adx):
                         if current_adx > 50:
                             trend_strength = "Very Strong Trend"
                         elif current_adx > 25:
