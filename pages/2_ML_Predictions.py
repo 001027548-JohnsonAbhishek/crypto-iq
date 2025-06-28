@@ -62,8 +62,8 @@ def main():
             
             # Train and predict with selected models
             if "LSTM" in models_to_use:
-                with st.status("Training LSTM model..."):
-                    lstm_model, lstm_history = predictor.train_lstm_model(
+                with st.status("Training LSTM model (using Prophet as alternative)..."):
+                    lstm_model = predictor.train_lstm_model(
                         data, sequence_length=sequence_length, epochs=epochs
                     )
                     if lstm_model:

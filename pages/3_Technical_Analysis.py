@@ -68,13 +68,13 @@ def main():
         
         signals = analyzer.generate_signals(data)
         
-        if not signals.empty:
+        if not signals.empty and 'Composite_Signal' in signals.columns:
             # Current signals
             col1, col2, col3, col4 = st.columns(4)
             
-            current_rsi_signal = signals['RSI_Signal'].iloc[-1]
-            current_macd_signal = signals['MACD_Signal'].iloc[-1]
-            current_ma_signal = signals['MA_Signal'].iloc[-1]
+            current_rsi_signal = signals['RSI_Signal'].iloc[-1] if 'RSI_Signal' in signals.columns else 0
+            current_macd_signal = signals['MACD_Signal'].iloc[-1] if 'MACD_Signal' in signals.columns else 0
+            current_ma_signal = signals['MA_Signal'].iloc[-1] if 'MA_Signal' in signals.columns else 0
             current_composite = signals['Composite_Signal'].iloc[-1]
             
             with col1:

@@ -67,8 +67,12 @@ class MLPredictor:
         """Train Prophet model"""
         try:
             # Prepare data for Prophet
+            dates = data.index
+            if hasattr(dates, 'tz') and dates.tz is not None:
+                dates = dates.tz_localize(None)  # Remove timezone
+            
             prophet_data = pd.DataFrame({
-                'ds': data.index,
+                'ds': dates,
                 'y': data['Close'].values
             })
             

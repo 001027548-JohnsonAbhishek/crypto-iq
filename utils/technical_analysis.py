@@ -237,6 +237,10 @@ class TechnicalAnalyzer:
         signals.loc[ma_short > ma_long, 'MA_Signal'] = 1
         signals.loc[ma_short < ma_long, 'MA_Signal'] = -1
         
+        # Composite signal (average of all signals)
+        signal_columns = ['RSI_Signal', 'MACD_Signal', 'MA_Signal']
+        signals['Composite_Signal'] = signals[signal_columns].mean(axis=1)
+        
         return signals
     
     def calculate_all_indicators(self, data):
