@@ -3,9 +3,9 @@
     "2025-06-28": 11
   },
   "page_views": {
-    "Home": 23,
+    "Home": 26,
     "Analytics Dashboard": 2,
-    "Institutional Flow Tracker": 15
+    "Institutional Flow Tracker": 17
   },
   "session_data": {
     "2025-06-28_session_20250628_234300_7082": {
@@ -61,12 +61,12 @@
     "2025-06-28_session_20250628_235707_4686": {
       "date": "2025-06-28",
       "time": "23:57",
-      "last_page": "Home"
+      "last_page": "Institutional Flow Tracker"
     }
   },
   "user_engagement": {
     "2025-06-28": {
-      "institutional_analysis_completed": 8,
+      "institutional_analysis_completed": 9,
       "institutional_analysis_refresh": 2
     }
   }
