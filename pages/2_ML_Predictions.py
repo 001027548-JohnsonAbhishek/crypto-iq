@@ -101,10 +101,8 @@ def main():
                     prophet_model = predictor.train_prophet_model(data)
                     if prophet_model:
                         prophet_pred = predictor.predict_prophet(data, days_ahead=prediction_days)
-                        if prophet_pred and len(prophet_pred) == 3:
-                            predictions['Prophet'] = prophet_pred[0]
-                            predictions['Prophet_Lower'] = prophet_pred[1]
-                            predictions['Prophet_Upper'] = prophet_pred[2]
+                        if prophet_pred:
+                            predictions['Prophet'] = prophet_pred
                             st.success("✅ Prophet model trained successfully")
                         else:
                             st.error("❌ Prophet prediction failed")
@@ -116,10 +114,8 @@ def main():
                     arima_model = predictor.train_arima_model(data)
                     if arima_model:
                         arima_pred = predictor.predict_arima(days_ahead=prediction_days)
-                        if arima_pred and len(arima_pred) == 3:
-                            predictions['ARIMA'] = arima_pred[0]
-                            predictions['ARIMA_Lower'] = arima_pred[1]
-                            predictions['ARIMA_Upper'] = arima_pred[2]
+                        if arima_pred:
+                            predictions['ARIMA'] = arima_pred
                             st.success("✅ ARIMA model trained successfully")
                         else:
                             st.error("❌ ARIMA prediction failed")
@@ -162,25 +158,30 @@ def main():
         # Add predictions
         colors = {'LSTM': 'red', 'GRU': 'orange', 'Prophet': 'green', 'ARIMA': 'purple'}
         
-        for model_name, prediction in predictions.items():
+        for model_name, prediction_data in predictions.items():
             if not model_name.endswith('_Lower') and not model_name.endswith('_Upper'):
+                # Extract prediction values from the dictionary
+                if isinstance(prediction_data, dict) and 'predictions' in prediction_data:
+                    pred_values = prediction_data['predictions']
+                    pred_dates = prediction_data.get('dates', future_dates)
+                else:
+                    pred_values = prediction_data
+                    pred_dates = future_dates
+                
                 fig.add_trace(go.Scatter(
-                    x=future_dates,
-                    y=prediction,
+                    x=pred_dates,
+                    y=pred_values,
                     mode='lines',
                     name=f'{model_name} Prediction',
                     line=dict(color=colors.get(model_name, 'gray'), width=2)
                 ))
                 
-                # Add confidence intervals if available
-                lower_key = f'{model_name}_Lower'
-                upper_key = f'{model_name}_Upper'
-                
-                if lower_key in predictions and upper_key in predictions:
+                # Add confidence intervals if available (for Prophet model)
+                if isinstance(prediction_data, dict) and 'lower_bound' in prediction_data and 'upper_bound' in prediction_data:
                     # Upper bound
                     fig.add_trace(go.Scatter(
-                        x=future_dates,
-                        y=predictions[upper_key],
+                        x=pred_dates,
+                        y=prediction_data['upper_bound'],
                         mode='lines',
                         name=f'{model_name} Upper',
                         line=dict(color=colors.get(model_name, 'gray'), width=1, dash='dash'),
@@ -189,13 +190,13 @@ def main():
                     
                     # Lower bound with fill
                     fig.add_trace(go.Scatter(
-                        x=future_dates,
-                        y=predictions[lower_key],
+                        x=pred_dates,
+                        y=prediction_data['lower_bound'],
                         mode='lines',
                         name=f'{model_name} Confidence',
                         line=dict(color=colors.get(model_name, 'gray'), width=1, dash='dash'),
                         fill='tonexty',
-                        fillcolor=f'rgba({colors.get(model_name, "gray")}, 0.2)',
+                        fillcolor=f'rgba(128, 128, 128, 0.2)',
                         showlegend=True
                     ))
         

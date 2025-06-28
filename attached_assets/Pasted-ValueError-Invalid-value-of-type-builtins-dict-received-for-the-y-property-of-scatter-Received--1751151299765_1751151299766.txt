@@ -1,0 +1,35 @@
+ValueError: Invalid value of type 'builtins.dict' received for the 'y' property of scatter Received value: {'dates': [Timestamp('2025-06-29 00:00:00'), Timestamp('2025-06-30 00:00:00'), Timestamp('2025-07-01 00:00:00'), Timestamp('2025-07-02 00:00:00'), Timestamp('2025-07-03 00:00:00'), Timestamp('2025-07-04 00:00:00'), Timestamp('2025-07-05 00:00:00'), Timestamp('2025-07-06 00:00:00'), Timestamp('2025-07-07 00:00:00'), Timestamp('2025-07-08 00:00:00'), Timestamp('2025-07-09 00:00:00'), Timestamp('2025-07-10 00:00:00'), Timestamp('2025-07-11 00:00:00'), Timestamp('2025-07-12 00:00:00'), Timestamp('2025-07-13 00:00:00'), Timestamp('2025-07-14 00:00:00'), Timestamp('2025-07-15 00:00:00'), Timestamp('2025-07-16 00:00:00'), Timestamp('2025-07-17 00:00:00'), Timestamp('2025-07-18 00:00:00'), Timestamp('2025-07-19 00:00:00'), Timestamp('2025-07-20 00:00:00'), Timestamp('2025-07-21 00:00:00'), Timestamp('2025-07-22 00:00:00'), Timestamp('2025-07-23 00:00:00'), Timestamp('2025-07-24 00:00:00'), Timestamp('2025-07-25 00:00:00'), Timestamp('2025-07-26 00:00:00'), Timestamp('2025-07-27 00:00:00'), Timestamp('2025-07-28 00:00:00')], 'predictions': [137.7882429198284, 137.42344445922106, 137.08218182342907, 137.75690636000144, 137.97729154571812, 138.1491832230614, 138.99539130049013, 139.35364172667707, 139.38136183050844, 139.39912128847033, 140.39444619501595, 140.89261881641207, 141.29571948638207, 142.3234996462186, 142.811402984602, 142.91540615520046, 142.95549999867364, 143.91952771889288, 144.3339919015638, 144.60308649110289, 145.4495427445182, 145.71260649286003, 145.55281891579742, 145.29542282032358, 145.9341122525824, 146.00173899556668, 145.90923398316247, 146.3863347733333, 146.27943869930724, 145.75625630841174], 'lower_bound': [111.38176069927107, 110.79698071455208, 109.30771039751625, 111.3914431437506, 111.429896385121, 111.29928526889911, 111.6044433157012, 112.80637770575112, 112.19316867507568, 113.1746469262885, 113.24954185232278, 113.99558501104114, 116.03271466219164, 115.16440409497527, 117.25684345832599, 116.03512002414001, 116.22737110839527, 114.94966033592162, 119.12122310085759, 117.34527038208434, 118.81259291137766, 119.34894108392254, 117.99693064431811, 118.19195927136738, 118.56928980211948, 116.98247156921134, 119.31442311280308, 119.27493296526477, 119.22762769598395, 119.36353172326905], 'upper_bound': [163.46796896785114, 162.52805310262053, 162.0814850722628, 166.14699921909414, 164.21113352367038, 166.3871173772825, 166.24913702940592, 165.2941520189394, 167.64580856405126, 165.349467814733, 167.17423114901337, 166.1171818761146, 168.9909330300002, 169.2515811625266, 170.02683360188792, 170.15362553634287, 169.88191004276914, 169.35037233235957, 169.2180671132025, 169.78429765743857, 172.83110209394565, 172.9594665126867, 172.91320605031098, 172.16080115476416, 172.9788930673058, 170.92012036165704, 173.19442656810585, 172.65068565297332, 173.84455220789192, 174.09393818327374], 'model_type': 'Prophet'} The 'y' property is an array that may be specified as a tuple, list, numpy array, or pandas Series
+Traceback:
+File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/streamlit/runtime/scriptrunner/exec_code.py", line 128, in exec_func_with_error_handling
+    result = func()
+             ^^^^^^
+File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 667, in code_to_exec
+    _mpa_v1(self._main_script_path)
+File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 165, in _mpa_v1
+    page.run()
+File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/streamlit/navigation/page.py", line 300, in run
+    exec(code, module.__dict__)  # noqa: S102
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+File "/home/runner/workspace/pages/2_ML_Predictions.py", line 447, in <module>
+    main()
+File "/home/runner/workspace/pages/2_ML_Predictions.py", line 167, in main
+    fig.add_trace(go.Scatter(
+                  ^^^^^^^^^^^
+File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/plotly/graph_objs/_scatter.py", line 2736, in __init__
+    self._set_property("y", arg, y)
+File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/plotly/basedatatypes.py", line 4403, in _set_property
+    _set_property_provided_value(self, name, arg, provided)
+File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/plotly/basedatatypes.py", line 398, in _set_property_provided_value
+    obj[name] = val
+    ~~~^^^^^^
+File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/plotly/basedatatypes.py", line 4932, in __setitem__
+    self._set_prop(prop, value)
+File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/plotly/basedatatypes.py", line 5276, in _set_prop
+    raise err
+File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/plotly/basedatatypes.py", line 5271, in _set_prop
+    val = validator.validate_coerce(val)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/_plotly_utils/basevalidators.py", line 410, in validate_coerce
+    self.raise_invalid_val(v)
+File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/_plotly_utils/basevalidators.py", line 298, in raise_invalid_val
+    raise ValueError(
