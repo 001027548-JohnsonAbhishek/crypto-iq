@@ -25,8 +25,10 @@ class InstitutionalFlowTracker:
         Analyze exchange inflows/outflows to identify institutional patterns
         """
         try:
-            # Get historical data for volume analysis
-            ticker = yf.Ticker(f"{symbol}-USD")
+            # Clean symbol and get historical data for volume analysis
+            clean_symbol = symbol.replace('$', '').upper()
+            ticker_symbol = f"{clean_symbol}-USD"
+            ticker = yf.Ticker(ticker_symbol)
             data = ticker.history(period=f"{days}d", interval="1h")
             
             if data.empty:
@@ -71,8 +73,10 @@ class InstitutionalFlowTracker:
         Analyze large transactions that indicate institutional activity
         """
         try:
-            # Simulate whale transaction detection based on volume patterns
-            ticker = yf.Ticker(f"{symbol}-USD")
+            # Clean symbol and simulate whale transaction detection based on volume patterns
+            clean_symbol = symbol.replace('$', '').upper()
+            ticker_symbol = f"{clean_symbol}-USD"
+            ticker = yf.Ticker(ticker_symbol)
             data = ticker.history(period="7d", interval="15m")
             
             if data.empty:
@@ -122,8 +126,10 @@ class InstitutionalFlowTracker:
         Estimate institutional holdings and accumulation patterns
         """
         try:
-            # Get longer term data for accumulation analysis
-            ticker = yf.Ticker(f"{symbol}-USD")
+            # Clean symbol and get longer term data for accumulation analysis
+            clean_symbol = symbol.replace('$', '').upper()
+            ticker_symbol = f"{clean_symbol}-USD"
+            ticker = yf.Ticker(ticker_symbol)
             data = ticker.history(period="1y", interval="1d")
             
             if data.empty:
@@ -187,8 +193,10 @@ class InstitutionalFlowTracker:
         Track ETF flows for institutional investment patterns
         """
         try:
-            # Simulate ETF flow tracking based on volume and price patterns
-            ticker = yf.Ticker(f"{symbol}-USD")
+            # Clean symbol and simulate ETF flow tracking based on volume and price patterns
+            clean_symbol = symbol.replace('$', '').upper()
+            ticker_symbol = f"{clean_symbol}-USD"
+            ticker = yf.Ticker(ticker_symbol)
             data = ticker.history(period="30d", interval="1d")
             
             if data.empty:
@@ -224,7 +232,9 @@ class InstitutionalFlowTracker:
         Analyze institutional sentiment indicators
         """
         try:
-            ticker = yf.Ticker(f"{symbol}-USD")
+            clean_symbol = symbol.replace('$', '').upper()
+            ticker_symbol = f"{clean_symbol}-USD"
+            ticker = yf.Ticker(ticker_symbol)
             data = ticker.history(period="90d", interval="1d")
             
             if data.empty:
