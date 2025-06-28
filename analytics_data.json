@@ -1,11 +1,11 @@
 {
   "daily_visits": {
-    "2025-06-28": 9
+    "2025-06-28": 10
   },
   "page_views": {
-    "Home": 17,
+    "Home": 22,
     "Analytics Dashboard": 2,
-    "Institutional Flow Tracker": 4
+    "Institutional Flow Tracker": 15
   },
   "session_data": {
     "2025-06-28_session_20250628_234300_7082": {
@@ -50,13 +50,19 @@
     },
     "2025-06-28_session_20250628_235453_8345": {
       "date": "2025-06-28",
-      "time": "23:54",
+      "time": "23:55",
+      "last_page": "Institutional Flow Tracker"
+    },
+    "2025-06-28_session_20250628_235659_1463": {
+      "date": "2025-06-28",
+      "time": "23:56",
       "last_page": "Home"
     }
   },
   "user_engagement": {
     "2025-06-28": {
-      "institutional_analysis_completed": 2
+      "institutional_analysis_completed": 8,
+      "institutional_analysis_refresh": 2
     }
   }
 }

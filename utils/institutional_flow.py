@@ -26,8 +26,12 @@ class InstitutionalFlowTracker:
         """
         try:
             # Clean symbol and get historical data for volume analysis
+            # Handle different symbol formats: BTC, $BTC, BTC-USD
             clean_symbol = symbol.replace('$', '').upper()
-            ticker_symbol = f"{clean_symbol}-USD"
+            if '-USD' not in clean_symbol:
+                ticker_symbol = f"{clean_symbol}-USD"
+            else:
+                ticker_symbol = clean_symbol
             ticker = yf.Ticker(ticker_symbol)
             data = ticker.history(period=f"{days}d", interval="1h")
             
@@ -75,7 +79,10 @@ class InstitutionalFlowTracker:
         try:
             # Clean symbol and simulate whale transaction detection based on volume patterns
             clean_symbol = symbol.replace('$', '').upper()
-            ticker_symbol = f"{clean_symbol}-USD"
+            if '-USD' not in clean_symbol:
+                ticker_symbol = f"{clean_symbol}-USD"
+            else:
+                ticker_symbol = clean_symbol
             ticker = yf.Ticker(ticker_symbol)
             data = ticker.history(period="7d", interval="15m")
             
@@ -128,7 +135,10 @@ class InstitutionalFlowTracker:
         try:
             # Clean symbol and get longer term data for accumulation analysis
             clean_symbol = symbol.replace('$', '').upper()
-            ticker_symbol = f"{clean_symbol}-USD"
+            if '-USD' not in clean_symbol:
+                ticker_symbol = f"{clean_symbol}-USD"
+            else:
+                ticker_symbol = clean_symbol
             ticker = yf.Ticker(ticker_symbol)
             data = ticker.history(period="1y", interval="1d")
             
@@ -195,7 +205,10 @@ class InstitutionalFlowTracker:
         try:
             # Clean symbol and simulate ETF flow tracking based on volume and price patterns
             clean_symbol = symbol.replace('$', '').upper()
-            ticker_symbol = f"{clean_symbol}-USD"
+            if '-USD' not in clean_symbol:
+                ticker_symbol = f"{clean_symbol}-USD"
+            else:
+                ticker_symbol = clean_symbol
             ticker = yf.Ticker(ticker_symbol)
             data = ticker.history(period="30d", interval="1d")
             
@@ -233,7 +246,10 @@ class InstitutionalFlowTracker:
         """
         try:
             clean_symbol = symbol.replace('$', '').upper()
-            ticker_symbol = f"{clean_symbol}-USD"
+            if '-USD' not in clean_symbol:
+                ticker_symbol = f"{clean_symbol}-USD"
+            else:
+                ticker_symbol = clean_symbol
             ticker = yf.Ticker(ticker_symbol)
             data = ticker.history(period="90d", interval="1d")
             
