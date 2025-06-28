@@ -201,11 +201,25 @@ def main():
                     ))
         
         # Add vertical line to separate historical and predicted data
-        fig.add_vline(
+        fig.add_shape(
+            type="line",
+            x0=last_date, x1=last_date,
+            y0=0, y1=1,
+            yref="paper",
+            line=dict(color="black", width=2, dash="dash")
+        )
+        
+        # Add annotation for the line
+        fig.add_annotation(
             x=last_date,
-            line_dash="dash",
-            line_color="black",
-            annotation_text="Prediction Start"
+            y=0.95,
+            yref="paper",
+            text="Prediction Start",
+            showarrow=True,
+            arrowhead=2,
+            arrowsize=1,
+            arrowwidth=2,
+            arrowcolor="black"
         )
         
         fig.update_layout(
