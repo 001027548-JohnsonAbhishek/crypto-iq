@@ -139,6 +139,7 @@ class MLPredictor:
             varied_predictions = predictions * trend_factor
             
             return {
+                'dates': base_predictions.get('dates', []),
                 'predictions': varied_predictions.tolist(),
                 'confidence_lower': base_predictions.get('confidence_lower', []),
                 'confidence_upper': base_predictions.get('confidence_upper', [])
@@ -160,6 +161,7 @@ class MLPredictor:
             varied_predictions = predictions * damping_factor
             
             return {
+                'dates': base_predictions.get('dates', []),
                 'predictions': varied_predictions.tolist(),
                 'confidence_lower': base_predictions.get('confidence_lower', []),
                 'confidence_upper': base_predictions.get('confidence_upper', [])

@@ -268,7 +268,7 @@ def main():
                 st.write("**ADX - Trend Strength**")
                 adx_data = indicators['ADX']
                 
-                if not adx_data.isna().all():
+                if adx_data is not None and not adx_data.isna().all().all():
                     fig_adx = go.Figure()
                     
                     fig_adx.add_trace(go.Scatter(
@@ -569,8 +569,8 @@ def main():
                     ))
                     
                     # Support levels
-                    if not sr_analysis['support_levels'].empty:
-                        for idx, support_price in sr_analysis['support_levels'].items():
+                    if sr_analysis['support_levels'] and len(sr_analysis['support_levels']) > 0:
+                        for idx, support_price in enumerate(sr_analysis['support_levels']):
                             fig_sr.add_hline(
                                 y=support_price,
                                 line_dash="dot",
@@ -579,8 +579,8 @@ def main():
                             )
                     
                     # Resistance levels
-                    if not sr_analysis['resistance_levels'].empty:
-                        for idx, resistance_price in sr_analysis['resistance_levels'].items():
+                    if sr_analysis['resistance_levels'] and len(sr_analysis['resistance_levels']) > 0:
+                        for idx, resistance_price in enumerate(sr_analysis['resistance_levels']):
                             fig_sr.add_hline(
                                 y=resistance_price,
                                 line_dash="dot",
