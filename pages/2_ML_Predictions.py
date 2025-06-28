@@ -416,9 +416,15 @@ def main():
             # Calculate prediction volatility
             all_predictions = []
             for pred in ensemble_predictions.values():
-                all_predictions.extend(pred)
+                if isinstance(pred, dict) and 'predictions' in pred:
+                    all_predictions.extend(pred['predictions'])
+                elif isinstance(pred, (list, tuple)):
+                    all_predictions.extend(pred)
             
-            pred_volatility = np.std(all_predictions)
+            if all_predictions:
+                pred_volatility = np.std(all_predictions)
+            else:
+                pred_volatility = 0
             historical_volatility = data['Close'].pct_change().std() * data['Close'].iloc[-1]
             
             st.write(f"• Prediction Volatility: ${pred_volatility:.4f}")
