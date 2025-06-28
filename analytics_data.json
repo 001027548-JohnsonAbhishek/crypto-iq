@@ -1,0 +1,21 @@
+{
+  "daily_visits": {
+    "2025-06-28": 2
+  },
+  "page_views": {
+    "Home": 3
+  },
+  "session_data": {
+    "2025-06-28_session_20250628_234300_7082": {
+      "date": "2025-06-28",
+      "time": "23:43",
+      "last_page": "Home"
+    },
+    "2025-06-28_session_20250628_234307_3926": {
+      "date": "2025-06-28",
+      "time": "23:43",
+      "last_page": "Home"
+    }
+  },
+  "user_engagement": {}
+}

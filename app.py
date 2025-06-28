@@ -8,6 +8,7 @@ import requests
 import numpy as np
 from utils.data_fetcher import CryptoDataFetcher
 from utils.technical_analysis import TechnicalAnalyzer
+from utils.analytics import track_page_view, track_engagement
 import warnings
 warnings.filterwarnings('ignore')
 
@@ -26,6 +27,9 @@ if 'selected_crypto' not in st.session_state:
     st.session_state.selected_crypto = 'BTC-USD'
 
 def main():
+    # Track page view
+    track_page_view("Home")
+    
     st.title("🚀 Comprehensive Cryptocurrency Analysis Platform")
     st.markdown("### Advanced ML Predictions, Sentiment Analysis & Portfolio Optimization")
     

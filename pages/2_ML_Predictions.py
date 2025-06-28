@@ -6,12 +6,16 @@ import numpy as np
 from datetime import datetime, timedelta
 from utils.data_fetcher import CryptoDataFetcher
 from utils.ml_models import MLPredictor
+from utils.analytics import track_page_view, track_engagement
 import warnings
 warnings.filterwarnings('ignore')
 
 st.set_page_config(page_title="ML Predictions", page_icon="🤖", layout="wide")
 
 def main():
+    # Track page view
+    track_page_view("ML Predictions")
+    
     st.title("🤖 Machine Learning Predictions")
     st.markdown("Advanced price prediction using multiple ML models")
     
