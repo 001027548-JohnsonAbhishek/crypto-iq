@@ -79,8 +79,8 @@ def main():
                         st.error("❌ LSTM model training failed")
             
             if "GRU" in models_to_use:
-                with st.status("Training GRU model..."):
-                    gru_model, gru_history = predictor.train_gru_model(
+                with st.status("Training GRU model (using Prophet as alternative)..."):
+                    gru_model = predictor.train_gru_model(
                         data, sequence_length=sequence_length, epochs=epochs
                     )
                     if gru_model:
@@ -125,6 +125,9 @@ def main():
             # Store predictions in session state
             st.session_state.predictions = predictions
             st.session_state.prediction_days = prediction_days
+    
+    # Initialize predictor for ensemble calculations
+    predictor = MLPredictor()
     
     # Display predictions if available
     if 'predictions' in st.session_state and st.session_state.predictions:
