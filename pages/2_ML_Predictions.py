@@ -366,7 +366,7 @@ def main():
                     'Final Price': f"${final_pred:.4f}",
                     'Change (%)': f"{change_pct:+.2f}%",
                     'Prediction Range': f"${min(pred_values):.4f} - ${max(pred_values):.4f}",
-                    'Volatility': f"{np.std(prediction):.4f}"
+                    'Volatility': f"{np.std(pred_values):.4f}"
                 })
         
         if comparison_data:
