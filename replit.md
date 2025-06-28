@@ -69,6 +69,13 @@ This is a comprehensive cryptocurrency analysis platform built with Streamlit th
    - Backtesting capabilities
    - Automated alert system foundation
 
+7. **Institutional Flow Tracker** (`pages/7_Institutional_Flow.py`)
+   - Large-scale trading pattern analysis
+   - Whale transaction detection
+   - Institutional holdings estimation
+   - ETF flow tracking
+   - Institutional sentiment analysis
+
 ### Utility Modules
 
 #### Data Fetcher (`utils/data_fetcher.py`)
@@ -106,6 +113,13 @@ This is a comprehensive cryptocurrency analysis platform built with Streamlit th
 - Signal strength calculation
 - Historical signal tracking
 - Pattern recognition algorithms
+
+#### Institutional Flow (`utils/institutional_flow.py`)
+- Large transaction detection and analysis
+- Exchange flow pattern recognition
+- Institutional holdings estimation
+- Whale activity tracking
+- ETF flow analysis and sentiment scoring
 
 ## Data Flow
 
@@ -172,6 +186,7 @@ This is a comprehensive cryptocurrency analysis platform built with Streamlit th
 - June 28, 2025. Initial setup
 - June 28, 2025. Added privacy-compliant analytics system with password-protected admin dashboard
 - June 28, 2025. Implemented secure admin access with password protection (admin123crypto) and hidden navigation
+- June 28, 2025. Added comprehensive institutional investor flow tracking with whale detection, ETF analysis, and sentiment scoring
 
 ## User Preferences
 
