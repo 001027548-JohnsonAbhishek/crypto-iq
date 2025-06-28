@@ -385,12 +385,20 @@ def main():
             st.write("**Model Agreement Analysis**")
             
             if len(ensemble_predictions) > 1:
-                # Calculate prediction agreement
-                final_predictions = [pred[-1] for pred in ensemble_predictions.values()]
-                pred_std = np.std(final_predictions)
-                pred_mean = np.mean(final_predictions)
+                # Calculate prediction agreement - handle different data formats
+                final_predictions = []
+                for pred in ensemble_predictions.values():
+                    if isinstance(pred, dict) and 'predictions' in pred:
+                        final_predictions.append(pred['predictions'][-1])
+                    elif isinstance(pred, (list, tuple)) and len(pred) > 0:
+                        final_predictions.append(pred[-1])
                 
-                agreement_score = max(0, 100 - (pred_std / pred_mean * 100))
+                if final_predictions:
+                    pred_std = np.std(final_predictions)
+                    pred_mean = np.mean(final_predictions)
+                    agreement_score = max(0, 100 - (pred_std / pred_mean * 100))
+                else:
+                    agreement_score = 0
                 
                 st.write(f"• Agreement Score: {agreement_score:.1f}%")
                 st.write(f"• Prediction Spread: ${pred_std:.4f}")
