@@ -348,16 +348,24 @@ def main():
         st.subheader("⚖️ Model Comparison")
         
         comparison_data = []
-        for model_name, prediction in predictions.items():
+        for model_name, prediction_data in predictions.items():
             if not model_name.endswith('_Lower') and not model_name.endswith('_Upper'):
-                final_pred = prediction[-1]
+                # Extract prediction values based on data format
+                if isinstance(prediction_data, dict) and 'predictions' in prediction_data:
+                    pred_values = prediction_data['predictions']
+                elif isinstance(prediction_data, (list, tuple)) and len(prediction_data) > 0:
+                    pred_values = prediction_data
+                else:
+                    continue  # Skip if we can't extract valid predictions
+                
+                final_pred = pred_values[-1]
                 change_pct = ((final_pred - current_price) / current_price) * 100
                 
                 comparison_data.append({
                     'Model': model_name,
                     'Final Price': f"${final_pred:.4f}",
                     'Change (%)': f"{change_pct:+.2f}%",
-                    'Prediction Range': f"${min(prediction):.4f} - ${max(prediction):.4f}",
+                    'Prediction Range': f"${min(pred_values):.4f} - ${max(pred_values):.4f}",
                     'Volatility': f"{np.std(prediction):.4f}"
                 })
         
