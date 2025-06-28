@@ -290,10 +290,17 @@ def main():
                         line=dict(color='blue', width=2)
                     ))
                     
-                    # Ensemble prediction
+                    # Ensemble prediction - extract values if it's a dictionary
+                    if isinstance(ensemble_pred, dict) and 'predictions' in ensemble_pred:
+                        ensemble_values = ensemble_pred['predictions']
+                        ensemble_dates = ensemble_pred.get('dates', future_dates)
+                    else:
+                        ensemble_values = ensemble_pred
+                        ensemble_dates = future_dates
+                    
                     fig_ensemble.add_trace(go.Scatter(
-                        x=future_dates,
-                        y=ensemble_pred,
+                        x=ensemble_dates,
+                        y=ensemble_values,
                         mode='lines',
                         name='Ensemble Prediction',
                         line=dict(color='black', width=3)
@@ -318,7 +325,10 @@ def main():
                     st.plotly_chart(fig_ensemble, use_container_width=True)
                     
                     # Ensemble metrics
-                    if isinstance(ensemble_pred, (list, tuple)) and len(ensemble_pred) > 0:
+                    if isinstance(ensemble_pred, dict) and 'predictions' in ensemble_pred:
+                        ensemble_final = ensemble_pred['predictions'][-1]
+                        ensemble_change = ((ensemble_final - current_price) / current_price) * 100
+                    elif isinstance(ensemble_pred, (list, tuple)) and len(ensemble_pred) > 0:
                         ensemble_final = ensemble_pred[-1]
                         ensemble_change = ((ensemble_final - current_price) / current_price) * 100
                     else:

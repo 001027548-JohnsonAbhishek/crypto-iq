@@ -1,0 +1,35 @@
+ValueError: Invalid value of type 'builtins.dict' received for the 'y' property of scatter Received value: {'dates': [Timestamp('2025-06-29 00:00:00'), Timestamp('2025-06-30 00:00:00'), Timestamp('2025-07-01 00:00:00'), Timestamp('2025-07-02 00:00:00'), Timestamp('2025-07-03 00:00:00'), Timestamp('2025-07-04 00:00:00'), Timestamp('2025-07-05 00:00:00'), Timestamp('2025-07-06 00:00:00'), Timestamp('2025-07-07 00:00:00'), Timestamp('2025-07-08 00:00:00'), Timestamp('2025-07-09 00:00:00'), Timestamp('2025-07-10 00:00:00'), Timestamp('2025-07-11 00:00:00'), Timestamp('2025-07-12 00:00:00'), Timestamp('2025-07-13 00:00:00'), Timestamp('2025-07-14 00:00:00'), Timestamp('2025-07-15 00:00:00'), Timestamp('2025-07-16 00:00:00'), Timestamp('2025-07-17 00:00:00'), Timestamp('2025-07-18 00:00:00'), Timestamp('2025-07-19 00:00:00'), Timestamp('2025-07-20 00:00:00'), Timestamp('2025-07-21 00:00:00'), Timestamp('2025-07-22 00:00:00'), Timestamp('2025-07-23 00:00:00'), Timestamp('2025-07-24 00:00:00'), Timestamp('2025-07-25 00:00:00'), Timestamp('2025-07-26 00:00:00'), Timestamp('2025-07-27 00:00:00'), Timestamp('2025-07-28 00:00:00')], 'predictions': [97720.17746339746, 97771.7364037215, 97642.21567124626, 97777.64964535751, 97620.38712109125, 97668.98926715138, 97692.27052339536, 97687.75843936634, 97893.28584016183, 97915.91553475497, 98199.5511577289, 98184.56287182069, 98367.72229323983, 98516.27430881387, 98626.42119571022, 98934.9320392107, 99048.07747829141, 99409.24338923751, 99458.5524520902, 99692.7883652697, 99879.45094964892, 100015.21827223442, 100337.529626319, 100453.49033289199, 100807.45297226789, 100840.60502181012, 101050.85869738965, 101206.87224289772, 101306.4797431702, 101588.24415836381], 'model_type': 'Ensemble'} The 'y' property is an array that may be specified as a tuple, list, numpy array, or pandas Series
+Traceback:
+File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/streamlit/runtime/scriptrunner/exec_code.py", line 128, in exec_func_with_error_handling
+    result = func()
+             ^^^^^^
+File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 667, in code_to_exec
+    _mpa_v1(self._main_script_path)
+File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 165, in _mpa_v1
+    page.run()
+File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/streamlit/navigation/page.py", line 300, in run
+    exec(code, module.__dict__)  # noqa: S102
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+File "/home/runner/workspace/pages/2_ML_Predictions.py", line 476, in <module>
+    main()
+File "/home/runner/workspace/pages/2_ML_Predictions.py", line 294, in main
+    fig_ensemble.add_trace(go.Scatter(
+                           ^^^^^^^^^^^
+File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/plotly/graph_objs/_scatter.py", line 2736, in __init__
+    self._set_property("y", arg, y)
+File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/plotly/basedatatypes.py", line 4403, in _set_property
+    _set_property_provided_value(self, name, arg, provided)
+File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/plotly/basedatatypes.py", line 398, in _set_property_provided_value
+    obj[name] = val
+    ~~~^^^^^^
+File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/plotly/basedatatypes.py", line 4932, in __setitem__
+    self._set_prop(prop, value)
+File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/plotly/basedatatypes.py", line 5276, in _set_prop
+    raise err
+File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/plotly/basedatatypes.py", line 5271, in _set_prop
+    val = validator.validate_coerce(val)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/_plotly_utils/basevalidators.py", line 410, in validate_coerce
+    self.raise_invalid_val(v)
+File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/_plotly_utils/basevalidators.py", line 298, in raise_invalid_val
+    raise ValueError(
