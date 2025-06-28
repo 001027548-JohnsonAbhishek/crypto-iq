@@ -296,6 +296,15 @@ def main():
             st.markdown(feature)
         
         st.info("Navigate to different pages using the sidebar to access advanced features!")
+    
+    # Hidden admin access (only visible when expanded)
+    with st.expander("⚙️ System Information", expanded=False):
+        st.markdown("**Platform Status**: Operational")
+        st.markdown("**Version**: 1.0.0")
+        col1, col2, col3 = st.columns([2, 1, 2])
+        with col2:
+            if st.button("Admin", help="Administrator access"):
+                st.switch_page("pages/99_Admin_Panel.py")
 
 if __name__ == "__main__":
     main()

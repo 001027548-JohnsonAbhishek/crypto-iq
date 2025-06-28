@@ -1,9 +1,10 @@
 {
   "daily_visits": {
-    "2025-06-28": 2
+    "2025-06-28": 5
   },
   "page_views": {
-    "Home": 3
+    "Home": 6,
+    "Analytics Dashboard": 1
   },
   "session_data": {
     "2025-06-28_session_20250628_234300_7082": {
@@ -14,6 +15,21 @@
     "2025-06-28_session_20250628_234307_3926": {
       "date": "2025-06-28",
       "time": "23:43",
+      "last_page": "Home"
+    },
+    "2025-06-28_session_20250628_234327_210": {
+      "date": "2025-06-28",
+      "time": "23:43",
+      "last_page": "Analytics Dashboard"
+    },
+    "2025-06-28_session_20250628_234523_2257": {
+      "date": "2025-06-28",
+      "time": "23:45",
+      "last_page": "Home"
+    },
+    "2025-06-28_session_20250628_234531_9578": {
+      "date": "2025-06-28",
+      "time": "23:45",
       "last_page": "Home"
     }
   },

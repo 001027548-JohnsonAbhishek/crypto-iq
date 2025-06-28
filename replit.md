@@ -170,6 +170,7 @@ This is a comprehensive cryptocurrency analysis platform built with Streamlit th
 ## Changelog
 
 - June 28, 2025. Initial setup
+- June 28, 2025. Added privacy-compliant analytics system with password-protected admin dashboard
 
 ## User Preferences
 

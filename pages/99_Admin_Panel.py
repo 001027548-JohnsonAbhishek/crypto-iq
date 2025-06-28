@@ -13,11 +13,40 @@ st.set_page_config(
 )
 
 def main():
-    # Track page view
+    # Admin authentication
+    if 'admin_authenticated' not in st.session_state:
+        st.session_state.admin_authenticated = False
+    
+    if not st.session_state.admin_authenticated:
+        st.title("🔐 Admin Access Required")
+        st.markdown("This page is restricted to authorized users only.")
+        st.markdown("*Note: Regular users won't see this page in navigation.*")
+        
+        password = st.text_input("Enter admin password:", type="password")
+        if st.button("Login"):
+            # Simple password check (you can change this password)
+            if password == "admin123crypto":
+                st.session_state.admin_authenticated = True
+                st.success("Access granted!")
+                st.rerun()
+            else:
+                st.error("Invalid password")
+        
+        st.stop()
+    
+    # Track page view only after authentication
     track_page_view("Analytics Dashboard")
     
-    st.title("📊 Privacy-Compliant Analytics Dashboard")
-    st.markdown("### Anonymous visitor insights and engagement metrics")
+    # Add logout button
+    col1, col2 = st.columns([6, 1])
+    with col2:
+        if st.button("Logout"):
+            st.session_state.admin_authenticated = False
+            st.rerun()
+    
+    with col1:
+        st.title("📊 Admin Analytics Dashboard")
+        st.markdown("### Private visitor insights and engagement metrics")
     
     # Privacy notice
     with st.expander("🔒 Privacy Notice", expanded=False):
