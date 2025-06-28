@@ -1,9 +1,9 @@
 {
   "daily_visits": {
-    "2025-06-28": 10
+    "2025-06-28": 11
   },
   "page_views": {
-    "Home": 22,
+    "Home": 23,
     "Analytics Dashboard": 2,
     "Institutional Flow Tracker": 15
   },
@@ -56,6 +56,11 @@
     "2025-06-28_session_20250628_235659_1463": {
       "date": "2025-06-28",
       "time": "23:56",
+      "last_page": "Home"
+    },
+    "2025-06-28_session_20250628_235707_4686": {
+      "date": "2025-06-28",
+      "time": "23:57",
       "last_page": "Home"
     }
   },
