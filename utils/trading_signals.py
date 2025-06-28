@@ -31,11 +31,11 @@ class TradingSignalGenerator:
             signals['MACD_Signal'] = macd_signals
             
             # Bollinger Bands Signals
-            bb_signals = self._generate_bollinger_signals(data, indicators.get('Bollinger_Bands'))
+            bb_signals = self._generate_bollinger_signals(data, indicators.get('BB'))
             signals['BB_Signal'] = bb_signals
             
             # Stochastic Signals
-            stoch_signals = self._generate_stochastic_signals(indicators.get('Stochastic'))
+            stoch_signals = self._generate_stochastic_signals(indicators.get('Stoch'))
             signals['Stoch_Signal'] = stoch_signals
             
             # Volume Analysis Signals
