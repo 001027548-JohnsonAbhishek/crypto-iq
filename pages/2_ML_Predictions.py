@@ -245,9 +245,17 @@ def main():
         model_cols = [col2, col3, col4]
         model_index = 0
         
-        for model_name, prediction in predictions.items():
+        for model_name, prediction_data in predictions.items():
             if not model_name.endswith('_Lower') and not model_name.endswith('_Upper') and model_index < 3:
-                final_prediction = prediction[-1]
+                # Extract final prediction value based on data format
+                if isinstance(prediction_data, dict) and 'predictions' in prediction_data:
+                    final_prediction = prediction_data['predictions'][-1]
+                elif isinstance(prediction_data, (list, tuple)) and len(prediction_data) > 0:
+                    final_prediction = prediction_data[-1]
+                else:
+                    # Skip if we can't extract a valid prediction
+                    continue
+                    
                 change_pct = ((final_prediction - current_price) / current_price) * 100
                 
                 with model_cols[model_index]:
@@ -291,11 +299,13 @@ def main():
                         line=dict(color='black', width=3)
                     ))
                     
-                    fig_ensemble.add_vline(
-                        x=last_date,
-                        line_dash="dash",
-                        line_color="gray",
-                        annotation_text="Prediction Start"
+                    # Add vertical line using shape instead of add_vline
+                    fig_ensemble.add_shape(
+                        type="line",
+                        x0=last_date, x1=last_date,
+                        y0=0, y1=1,
+                        yref="paper",
+                        line=dict(color="gray", width=2, dash="dash")
                     )
                     
                     fig_ensemble.update_layout(
@@ -308,8 +318,12 @@ def main():
                     st.plotly_chart(fig_ensemble, use_container_width=True)
                     
                     # Ensemble metrics
-                    ensemble_final = ensemble_pred[-1]
-                    ensemble_change = ((ensemble_final - current_price) / current_price) * 100
+                    if isinstance(ensemble_pred, (list, tuple)) and len(ensemble_pred) > 0:
+                        ensemble_final = ensemble_pred[-1]
+                        ensemble_change = ((ensemble_final - current_price) / current_price) * 100
+                    else:
+                        ensemble_final = 0
+                        ensemble_change = 0
                     
                     col1, col2, col3 = st.columns(3)
                     with col1:
