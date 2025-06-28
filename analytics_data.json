@@ -4,7 +4,7 @@
   },
   "page_views": {
     "Home": 6,
-    "Analytics Dashboard": 1
+    "Analytics Dashboard": 2
   },
   "session_data": {
     "2025-06-28_session_20250628_234300_7082": {
@@ -30,7 +30,7 @@
     "2025-06-28_session_20250628_234531_9578": {
       "date": "2025-06-28",
       "time": "23:45",
-      "last_page": "Home"
+      "last_page": "Analytics Dashboard"
     }
   },
   "user_engagement": {}
