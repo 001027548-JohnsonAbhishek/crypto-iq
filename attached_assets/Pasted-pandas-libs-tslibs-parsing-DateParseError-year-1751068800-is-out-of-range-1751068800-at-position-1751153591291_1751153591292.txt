@@ -1,0 +1,35 @@
+pandas._libs.tslibs.parsing.DateParseError: year 1751068800 is out of range: 1751068800, at position 0
+Traceback:
+File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/streamlit/runtime/scriptrunner/exec_code.py", line 128, in exec_func_with_error_handling
+    result = func()
+             ^^^^^^
+File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 667, in code_to_exec
+    _mpa_v1(self._main_script_path)
+File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 165, in _mpa_v1
+    page.run()
+File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/streamlit/navigation/page.py", line 300, in run
+    exec(code, module.__dict__)  # noqa: S102
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+File "/home/runner/workspace/pages/4_Sentiment_Analysis.py", line 578, in <module>
+    main()
+File "/home/runner/workspace/pages/4_Sentiment_Analysis.py", line 476, in main
+    dates = [pd.to_datetime(item['timestamp']) for item in fng_data]
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+File "/home/runner/workspace/pages/4_Sentiment_Analysis.py", line 476, in <listcomp>
+    dates = [pd.to_datetime(item['timestamp']) for item in fng_data]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/pandas/core/tools/datetimes.py", line 1106, in to_datetime
+    result = convert_listlike(np.array([arg]), format)[0]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/pandas/core/tools/datetimes.py", line 437, in _convert_listlike_datetimes
+    result, tz_parsed = objects_to_datetime64(
+                        ^^^^^^^^^^^^^^^^^^^^^^
+File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/pandas/core/arrays/datetimes.py", line 2415, in objects_to_datetime64
+    result, tz_parsed = tslib.array_to_datetime(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^
+File "pandas/_libs/tslib.pyx", line 412, in pandas._libs.tslib.array_to_datetime
+File "pandas/_libs/tslib.pyx", line 596, in pandas._libs.tslib.array_to_datetime
+File "pandas/_libs/tslib.pyx", line 553, in pandas._libs.tslib.array_to_datetime
+File "pandas/_libs/tslibs/conversion.pyx", line 641, in pandas._libs.tslibs.conversion.convert_str_to_tsobject
+File "pandas/_libs/tslibs/parsing.pyx", line 336, in pandas._libs.tslibs.parsing.parse_datetime_string
+File "pandas/_libs/tslibs/parsing.pyx", line 688, in pandas._libs.tslibs.parsing.dateutil_parse

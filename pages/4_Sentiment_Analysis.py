@@ -473,8 +473,20 @@ def main():
                 
                 # Historical Fear & Greed
                 if len(fng_data) > 1:
-                    dates = [pd.to_datetime(item['timestamp']) for item in fng_data]
-                    values = [int(item['value']) for item in fng_data]
+                    dates = []
+                    values = []
+                    for item in fng_data:
+                        try:
+                            # Handle both unix timestamp and string dates
+                            timestamp = item['timestamp']
+                            if isinstance(timestamp, (int, float)) or timestamp.isdigit():
+                                dates.append(pd.to_datetime(int(timestamp), unit='s'))
+                            else:
+                                dates.append(pd.to_datetime(timestamp))
+                            values.append(int(item['value']))
+                        except (ValueError, OverflowError):
+                            # Skip invalid timestamps and their corresponding values
+                            continue
                     
                     fig_fng_hist = go.Figure(data=[
                         go.Scatter(x=dates, y=values, mode='lines+markers',
