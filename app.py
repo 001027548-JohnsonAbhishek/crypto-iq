@@ -14,8 +14,8 @@ warnings.filterwarnings('ignore')
 
 # Configure page
 st.set_page_config(
-    page_title="Crypto Analysis Platform",
-    page_icon="₿",
+    page_title="CryptoIQ Analytics",
+    page_icon="🧠",
     layout="wide",
     initial_sidebar_state="expanded"
 )
@@ -30,8 +30,8 @@ def main():
     # Track page view
     track_page_view("Home")
     
-    st.title("🚀 Comprehensive Cryptocurrency Analysis Platform")
-    st.markdown("### Advanced ML Predictions, Sentiment Analysis & Portfolio Optimization")
+    st.title("🧠 CryptoIQ Analytics")
+    st.markdown("### Institutional-Grade Cryptocurrency Intelligence Platform")
     
     # Sidebar for crypto selection
     with st.sidebar:
